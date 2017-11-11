@@ -49,6 +49,8 @@ DJANGO_USE_DEBUG_SILK = env.bool('DJANGO_USE_DEBUG_SILK')
 SECRET_KEY = env('DJANGO_SECRET_KEY')
 
 ALLOWED_HOSTS = env.list('DJANGO_ALLOWED_HOSTS')
+# Honor the 'X-Forwarded-Proto' header for request.is_secure()
+SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
 
 ADMINS = tuple([tuple(admins.split(':')) for admins in env.list('DJANGO_ADMINS')])
 
