@@ -62,7 +62,6 @@ node_modules/
 todo_list/media/
 
 
-staticfiles/
 /.project
 .vagrant/*
 
