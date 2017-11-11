@@ -88,6 +88,8 @@ THIRD_PARTY_APPS = (
     'allauth.account',
     'allauth.socialaccount',
     'crispy_forms',
+    'constance',
+    'constance.backends.database',
 )
 
 LOCAL_APPS = (
@@ -107,6 +109,12 @@ MIDDLEWARE_CLASSES = (
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
 )
+
+CONSTANCE_BACKEND = 'constance.backends.database.DatabaseBackend'
+CONSTANCE_CONFIG = {
+    'SITE_TITLE': ('DIPLOMA PROJECT', 'Site title'),
+    'SITE_LOGO_URL': ('http://aurora-hall.ru/assets/images/afisha/717x311/krovostok-717.jpg', 'Site logo img URL.'),
+}
 
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -139,6 +147,7 @@ TEMPLATES = [
                 'django.template.loaders.app_directories.Loader',
             ],
             'context_processors': [
+                'constance.context_processors.config',
                 'django.template.context_processors.debug',
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',

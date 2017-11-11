@@ -13,3 +13,4 @@ django-widget-tweaks==1.4.1
 django-picklefield==0.3.2
 django-crispy-forms==1.6.1
 django-allauth==0.31.0
+django-constance==2.0.0
