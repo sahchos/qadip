@@ -17,7 +17,7 @@ env = environ.Env(
     DJANGO_ALLOWED_HOSTS=(list, os.environ.get('DJANGO_ALLOWED_HOSTS')),
     DJANGO_STATIC_ROOT=(str, str(APPS_DIR('staticfiles'))),
     DJANGO_MEDIA_ROOT=(str, str(APPS_DIR('media'))),
-    DJANGO_DATABASE_URL=(str, 'postgis:///qadip'),
+    DATABASE_URL=(str, os.environ.get('DATABASE_URL')),
 
     DJANGO_DEFAULT_FROM_EMAIL=(str, os.environ.get('DJANGO_DEFAULT_FROM_EMAIL')),
     DJANGO_EMAIL_BACKEND=(str, os.environ.get('DJANGO_EMAIL_BACKEND')),
@@ -68,22 +68,15 @@ USE_L10N = True
 
 USE_TZ = True
 
-# DATABASES = {
-#     'default': {
-#         'ENGINE': 'django.db.backends.postgresql_psycopg2',
-#         'NAME': env('POSTGRES_NAME', default='qadip'),
-#         'USER': env('POSTGRES_USER', default='postgres'),
-#         'PASSWORD': env('POSTGRES_PASSWORD', default=''),
-#         'HOST': env('POSTGRES_HOST', default='192.168.1.10'),
-#         'PORT': env('POSTGRES_PORT', default='5432'),
-#     },
-# }
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': 'qadip.db',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
     }
 }
+
+import dj_database_url
+db_from_env = dj_database_url.config(conn_max_age=500, default=env('DATABASE_URL'))
+DATABASES['default'].update(db_from_env)
 
 DJANGO_APPS = (
     'django.contrib.auth',

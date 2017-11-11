@@ -14,3 +14,4 @@ django-picklefield==0.3.2
 django-crispy-forms==1.6.1
 django-allauth==0.31.0
 django-constance==2.0.0
+dj-database-url==0.4.2
