@@ -26,3 +26,13 @@
 .highlighted {
   background-color: yellow;
 }
+
+.logo {
+    margin: 20px 0;
+    text-align: center;
+}
+
+.logo img {
+    height: auto;
+    max-width: 100%;
+}
