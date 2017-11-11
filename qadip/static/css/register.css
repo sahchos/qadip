@@ -1,0 +1,71 @@
+body {
+    background: #f0f7f8; }
+
+.register-bg {
+    position: absolute;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    left: 0;
+    height: 172px;
+    background: #4eb6d4; }
+
+.register-wrapper {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 480px;
+    margin: auto; }
+
+    .register-header {
+        position: relative;
+        padding-top: 4px; }
+        .register-logo { display: inline-block; }
+        .register-username {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            padding: 16px;
+            font-size: 14px;
+            font-weight: bold;
+            color: #fff; }
+        .register-avatar { float: right; }
+        .register-avatar,
+        .register-avatar img {
+            overflow: hidden;
+        	width: 48px;
+        	height: 48px;
+        	border-radius: 24px; }
+
+    .register-container {
+        display: block;
+        padding: 0 12px 12px 12px;
+        border-bottom: 1px solid rgba(0, 0, 0, .12);
+        background: #fff; }
+        .register-container > .section { margin: 0; }
+
+    .register-footer {
+        display: block;
+        text-align: center;
+        color: #999;
+        padding: 24px 12px; }
+        .register-language,
+        .register-language button { font-size: 12px; }
+        .register-language button {
+            color: #3d85b8; }
+            .register-language button.active {
+                font-weight: bold;
+                color: #999; }
+
+
+@media (min-width: 481px) {
+    .register-header { padding-top: 60px; }
+    .register-container {
+        padding: 24px 36px 30px 36px;
+        box-shadow: 0 2px 6px rgba(0, 0, 0, .12);
+        border: 1px solid rgba(0, 0, 0, .12);
+        border-radius: 4px; }
+    .register-username {
+        padding: 14px;
+        font-size: 16px; }
+}

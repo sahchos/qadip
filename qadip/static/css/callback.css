@@ -1,0 +1,660 @@
+* {
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	-o-user-select: none;
+	user-select: none; }
+
+input,
+textarea {
+    -webkit-user-select: text;
+	-khtml-user-select: text;
+	-moz-user-select: text;
+    -o-user-select: text;
+    user-select: text;
+    resize: none; }
+
+html,
+body {
+	height: 100%;
+	background: white;
+	overflow: hidden; }
+
+body,
+button,
+input,
+a {
+	font-family: "Trebuchet MS", sans-serif; }
+
+html.standalone,
+html.standalone body {
+	overflow: auto; }
+	html.standalone .wrapper {
+		padding-top: 20px; }
+	html.nav-hidden nav {
+		display: none; }
+	html.nav-hidden .wrapper {
+		padding-bottom: 0; }
+
+body.favorites .page.favorites,
+body.history .page.history,
+body.contacts .page.contacts,
+body.keypad .page.keypad,
+body.settings .page.settings,
+body.contact .page.contact,
+body.contact-new .page.contact-new,
+body.ringing .page.ringing,
+body.signin .page.signin,
+body.geo .page.geo {
+    overflow: visible;
+	display: block; }
+
+ul,
+ul li {
+	list-style: none; }
+
+.icon {
+	display: inline-block;
+	background: transparent url(/static/images/callback/sprite.png) 0 0 no-repeat;
+	height: 32px;
+	width: 32px;
+	*display: inline;
+	*zoom: 1; }
+
+	.icon-favorites {
+		background-position: -32px 0; }
+		.tap > .icon-favorites,
+		.hover > .icon-favorites,
+		.active > .icon-favorites,
+		body.back-favorites.contact nav .icon-favorites,
+		body.favorites nav .icon-favorites { background-position: -32px -32px; }
+		body.back-favorites.contact nav .button-favorites,
+		body.favorites nav .button-favorites { color: #3e82ae; }
+
+	.icon-history {
+		background-position: -64px 0; }
+		.tap > .icon-history,
+		.hover > .icon-history,
+		body.history .icon-history { background-position: -64px -32px; }
+		body.history .button-history { color: #3e82ae; }
+
+	.icon-contacts {
+		background-position: -96px 0; }
+		.tap > .icon-contacts,
+		.hover > .icon-contacts,
+		body.back-contacts.contact-new .icon-contacts,
+		body.back-contacts.contact .icon-contacts,
+		body.contacts .icon-contacts { background-position: -96px -32px; }
+		body.back-contacts.contact-new .button-contacts,
+		body.back-contacts.contact .button-contacts,
+		body.contacts .button-contacts { color: #3e82ae; }
+
+	.icon-keypad {
+		background-position: -128px 0; }
+		.tap > .icon-keypad,
+		.hover > .icon-keypad,
+		body.keypad .icon-keypad { background-position: -128px -32px; }
+		body.keypad .button-keypad { color: #3e82ae; }
+
+	.icon-settings {
+		background-position: -160px 0; }
+		body.settings .button-settings {
+			color: #3e82ae; }
+		body.settings .icon-settings,
+		.tap > .icon-settings,
+		.hover > .icon-settings {
+			background-position: -160px -32px; }
+
+	.icon-sms {
+		background-position: -192px 0; }
+		.tap > .icon-sms,
+		.hover > .icon-sms { background-position: -192px -32px; }
+
+	.icon-call {
+		background-position: -224px 0; }
+		.tap > .icon-call,
+		.hover > .icon-call { background-position: -224px -32px; }
+
+	.icon-backspace {
+		background-position: -256px 0; }
+		.tap > .icon-backspace,
+		.hover > .icon-backspace { background-position: -256px -32px; }
+
+	.icon-back {
+		background-position: -288px 0; }
+		.tap > .icon-back,
+		.hover > .icon-back { background-position: -288px -32px; }
+
+	.icon-trash {
+		background-position: -320px 0; }
+		.tap > .icon-trash,
+		.hover > .icon-trash { background-position: -320px -32px; }
+
+	.icon-menu {
+		background-position: -352px 0; }
+		.tap > .icon-menu,
+		.hover > .icon-menu { background-position: -352px -32px; }
+
+	.icon-bars {
+		background-position: -384px 0; }
+		.tap > .icon-bars,
+		.hover > .icon-bars { background-position: -384px -32px; }
+
+	.icon-signout {
+		background-position: -416px 0; }
+		.tap > .icon-signout,
+		.hover > .icon-signout { background-position: -416px -32px; }
+
+	.icon-create {
+		background-position: -448px 0; }
+		.tap > .icon-create,
+		.hover > .icon-create { background-position: -448px -32px; }
+
+	.icon-edit {
+		background-position: -480px 0; }
+		.tap > .icon-edit,
+		.hover > .icon-edit { background-position: -480px -32px; }
+
+
+.container {
+	position: relative;
+	max-width: 600px;
+	height: 100%;
+	margin: 0 auto;
+	*zoom: 1; }
+	.container:after {
+		clear: both; }
+	.container:before, .container:after {
+		display: table;
+		line-height: 0;
+		content: ""; }
+
+.wrapper {
+	position: relative;
+	background: rgba(71, 143, 194, 0.98);
+	overflow: hidden;
+	height: 100%;
+	padding-bottom: 50px; }
+
+nav {
+	position: relative;
+	z-index: 200;
+	height: 50px;
+	margin-top: -50px;
+	overflow: hidden;
+	background: #e7ebef;
+	border-top: 1px solid #ced8de; }
+	nav button {
+		float: left;
+		background: none;
+		color: #919fab;
+		font-size: 11px;
+		width: 20%;
+		height: 100%;
+		text-align: center;
+		vertical-align: middle; }
+
+.page {
+	display: none;
+    overflow: hidden;
+	position: relative;
+	background: #fff;
+	height: 100%; }
+
+header {
+	position: absolute;
+	z-index: 150;
+	height: 44px;
+	width: 100%;
+	top: 0;
+	background: rgba(71, 143, 194, 0.975);
+	overflow: hidden;
+	text-align: center; }
+	header h1 {
+		line-height: 2.4;
+		font-size: 18px;
+		font-weight: normal;
+		color: white;
+		padding: 0 12px;
+		margin: 0 54px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis; }
+	header button {
+		height: 48px;
+		width: 48px; }
+		header button.left {
+			float: left; }
+		header button.right {
+			float: right; }
+
+aside {
+	position: absolute;
+	z-index: 100;
+	background: rgba(218, 225, 231, 0.9);
+	border-bottom: 1px solid #b6c4ce;
+	height: 44px;
+	width: 100%;
+	top: 0;
+	padding: 6px; }
+	aside input {
+		width: 100%;
+		height: 100%;
+		padding: 6px 12px;
+		background: white;
+		border-radius: 4px;
+		font-size: 14px; }
+
+section {
+	position: absolute;
+	z-index: 80;
+	background: #fff;
+	top: 0;
+	bottom: 0;
+	width: 100%;
+	overflow: auto; }
+
+footer {
+	position: absolute;
+	z-index: 90;
+	width: 100%; }
+
+fieldset legend {
+	background: #f3f5f7;
+	width: 100%; }
+	fieldset legend div {
+		height: 32px;
+		font-size: 16px;
+		color: #415462;
+		line-height: 2;
+		padding: 0 12px; }
+fieldset label div {
+	border-bottom: 1px solid #f3f5f7; }
+	fieldset label div span {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		left: 0;
+		padding: 12px;
+		font-size: 12px;
+		color: #a9bac6;
+		width: 96px; }
+	fieldset label div button {
+		position: absolute;
+		top: 0;
+		right: 0;
+		bottom: 0;
+		height: 100%;
+		width: 32px; }
+	fieldset label div input {
+		display: block;
+		width: 100%;
+		padding: 12px 12px 12px 108px;
+		font-size: 12px; }
+
+html.offline header { background: rgba(218, 225, 231, 0.9); }
+
+.btn {
+	background: #415462;
+	height: 48px;
+	width: 50%;
+	margin: 12px 25%;
+	color: white;
+	font-size: 18px;
+	border-radius: 4px; }
+	.btn.hover {
+		background: #394a56; }
+	.btn.tap {
+		background: #478fc2; }
+
+.page.ringing {
+	padding-bottom: 0; }
+	.page.ringing header {
+		bottom: 72px;
+		height: auto;
+		background-image: url(/static/images/callback/loading-big.gif);
+		background-position: center 25%;
+		background-repeat: no-repeat; }
+		.page.ringing header .container {
+			color: #fff;
+			text-align: center; }
+			.page.ringing header .container .phone {
+				position: relative;
+				top: 65%;
+				text-overflow: ellipsis;
+				overflow: hidden;
+				font-size: 24px; }
+				.page.ringing header .container .phone .name {
+					font-size: 16px; }
+	.page.ringing footer {
+		height: 72px;
+		bottom: 0; }
+
+@media all and (max-height: 320px) {
+	.page.ringing header {
+		background-image: none; }
+	.page.ringing header .container .ringing-phone {
+		top: 35%;
+	} }
+
+.page.favorites section article {
+	margin-top: 44px; }
+
+.page.history section article {
+	margin-top: 44px; }
+
+.page.contacts aside {
+	top: 44px; }
+.page.contacts section article {
+	margin-top: 88px; }
+
+.page.keypad { }
+.page.keypad header {
+	height: 110px; }
+	.page.keypad header .backspace {
+		position: absolute;
+		z-index: 30;
+		display: none;
+		top: 0;
+		right: 0;
+		height: 100%;
+		width: 68px; }
+		.page.keypad header .backspace.active {
+			display: block; }
+	.page.keypad header .called-name {
+		position: absolute;
+		z-index: 20;
+		display: none;
+		width: 100%;
+		top: 10%;
+		text-align: left;
+		padding: 0 36px 0 18px;
+		font-size: 12px;
+		color: white; }
+		.page.keypad header .called-name.active {
+			display: block; }
+	.page.keypad header .called {
+		display: block;
+		background: none;
+		padding: 20px 36px 20px 18px;
+		height: 100%;
+		width: 100%;
+		vertical-align: middle;
+		font-size: 32px;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		color: white; }
+.page.keypad section {
+	top: 110px;
+	bottom: 72px;
+	overflow: hidden; }
+	.page.keypad section .keypad {
+        float: left;
+		width: 25%;
+		height: 100%;
+		border-bottom: 1px solid #e7ebef;
+		text-align: center; }
+		.page.keypad section .keypad button {
+			float: left;
+			height: 100%;
+			width: 33.33333%;
+			border-right: 1px solid #e7ebef;
+			background: white;
+			color: #415462;
+			font-size: 32px; }
+			.page.keypad section .keypad button.hover {
+				background-color: rgba(231, 235, 239, 0.1); }
+			.page.keypad section .keypad button.tap {
+				box-shadow: inset 0 0 50px #e7ebef; }
+			.page.keypad section .keypad button div,
+			.page.keypad section .keypad button span {
+				display: block;
+				color: rgba(65, 84, 98, 0.5); }
+				.page.keypad section .keypad button span {
+					font-size: 12px; }
+				.page.keypad section .keypad button div {
+					font-size: 22px;
+					line-height: 0.5; }
+.page.keypad footer {
+	text-align: center;
+	top: auto;
+	bottom: 0;
+	height: 72px; }
+	.page.keypad footer .container {
+		padding: 0; }
+		.page.keypad footer .container button {
+			position: relative;
+			display: block;
+			background: #b6db49;
+			border-radius: 50px;
+			height: 48px;
+			width: 70%;
+			margin: 12px 15%; }
+			.page.keypad footer .container button.hover {
+				background: #c5eb4d; }
+			.page.keypad footer .container button.tap {
+				background: #415462; }
+			.page.keypad footer .container button.sms {
+				background: #415462; }
+			.page.keypad footer .container button.sms.hover {
+				background: #394a56; }
+			.page.keypad footer .container button.sms.tap {
+				background: #478fc2; }
+
+@media (min-height: 380px) {
+    .page.keypad section .keypad {
+        float: none;
+		width: 100%;
+		height: 25%; }
+        .page.keypad section .keypad button:last-child {
+			border-right-width: 0; }
+}
+
+
+.page.settings section {
+	padding-top: 44px;
+	bottom: 72px; }
+	.page.settings section label .container .icon {
+		position: absolute;
+		top: 0;
+		bottom: 0;
+		right: 0;
+		padding: 12px;
+	}
+	.page.settings section ul li .container {
+		padding: 12px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+		color: #415462;
+		font-size: 16px; }
+		.page.settings section ul li.active .container {
+			color: #478fc2; }
+
+	@media (max-height: 320px) {
+		.page.settings header {
+			padding-top: 0;
+			height: 48px; }
+		.page.settings section {
+			top: 48px; } }
+
+.page.settings footer {
+	text-align: center;
+	border-top: 1px solid #f3f5f7;
+	bottom: 0;
+	height: 72px; }
+
+.page.contact-new section {
+	bottom: 72px; }
+.page.contact-new section article {
+	margin-top: 44px; }
+.page.contact-new footer {
+	text-align: center;
+	border-top: 1px solid #f3f5f7;
+	bottom: 0;
+	height: 72px; }
+
+.page.signin {  }
+.page.signin header {
+	padding: 0 24px;
+	top: 0;
+	height: auto;
+	bottom: 72px; }
+	.page.signin header img {
+		position: relative;
+		top: 20%;
+		margin: auto; }
+		@media (max-height: 320px) {
+			.page.signin header img {
+				display: none; } }
+	.page.signin header label {
+		position: relative;
+		display: block;
+		top: 35%;
+		max-width: 388px;
+		margin: auto; }
+		.page.signin header label input {
+			display: block;
+			margin: auto;
+			width: 100%;
+			padding: 18px 24px;
+			background: #fff;
+			border-radius: 4px;
+			font-size: 14px; }
+
+.page.signin footer {
+	text-align: center;
+	bottom: 0;
+	height: 72px; }
+
+.page.geo section article {
+    text-align: center;
+	margin-top: 50px;
+	margin-bottom: 72px; }
+    .page.geo section article .alert {
+        padding: 12px;
+        border-radius: 4px;
+        background: rgba(218, 225, 231, 0.9);
+        font-size: 14px;
+        text-align: center;
+        margin: 48px;
+    }
+
+.page.geo footer {
+	text-align: center;
+    border-top: 1px solid #f3f5f7;
+	bottom: 0;
+	height: 72px; }
+
+
+.loading {
+	display: none;
+	position: fixed;
+	z-index: 500;
+	top: 0;
+	right: 0;
+	bottom: 0;
+	left: 0;
+	background: rgba(0, 0, 0, 0.6) url(/static/images/callback/loading.gif) center center no-repeat; }
+	.loading.active {
+		display: block; }
+
+
+.item {
+	position: relative;
+	cursor: pointer; }
+	.item .container {
+		border-bottom: 1px solid #f3f5f7;
+		padding: 6px 12px; }
+		.item .container:after {
+			clear: both; }
+		.item .container:before,
+		.item .container:after {
+			display: table;
+			line-height: 0;
+			content: ""; }
+	.item.hover {
+		background: rgba(243, 245, 247, 0.1); }
+	.item.tap {
+		background: rgba(243, 245, 247, 0.5); }
+	.item:last-child .container {
+		border-bottom-width: 0; }
+
+.item-legend {
+	background: #f3f5f7; }
+	.item-legend .container {
+		height: 22px;
+		font-size: 14px;
+		font-weight: bold;
+		color: #415462;
+		line-height: 1.6;
+		padding: 0 12px; }
+
+
+.item-contact {  }
+.item-contact .container {
+	display: block;
+	padding: 12px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #415462;
+	font-size: 16px; }
+.search-not-found {
+	text-align: center;
+	padding: 24px;
+	font-size: 18px;
+	font-weight: bold;
+	color: #7893a5; }
+
+.item-history {  }
+.item-history-time {
+	float: right;
+	width: 72px;
+	padding: 12px 6px;
+	text-align: right;
+	font-size: 12px;
+	color: #a9bac6; }
+.item-history-name {
+	display: block;
+	margin-right: 84px;
+	white-space: nowrap;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	color: #415462;
+	font-size: 16px; }
+.item-history-label {
+	padding-right: 6px;
+	font-size: 12px;
+	color: #7893a5; }
+
+
+
+
+
+.profile {
+	margin-top: 44px;
+	background: #f3f5f7; }
+	.profile .profile-favorite {
+		position: absolute;
+		top: 0;
+		right: 0;
+		width: 68px;
+		height: 100%; }
+	.profile .profile-name {
+		padding: 26px 68px 26px 12px;
+		font-size: 22px;
+		font-weight: bold; }
+	.item-profile .container {
+		padding: 12px; }
+		.item-profile .item-profile-label {
+			font-size: 12px;
+			color: #7893a5; }
+		.item-profile .item-profile-phone {
+			white-space: nowrap;
+			overflow: hidden;
+			text-overflow: ellipsis;
+			color: #415462;
+			font-size: 16px; }

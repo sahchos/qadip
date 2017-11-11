@@ -1,0 +1,35 @@
+{% load i18n common_tags %}
+
+<div class="paginate-wraper clearfix">
+    <div class="dataTables_info pull-left">
+        {% trans 'Showing' %} {{ page_obj.start_index }} {% trans 'to' %} {{ page_obj.end_index }} {% trans 'of' %} {{ page_obj.paginator.count }} {% trans 'matching records' %}
+    </div>
+    <div class="pull-right">
+        {% if has_previous %}
+            <a class="paginate_button" href="?{% url_replace page=previous %}">{% trans 'previous'|title %}</a>
+        {% endif %}
+
+        {% if show_first %}
+            <a class="paginate_button" href="?{% url_replace page=1 %}">1</a>
+            <span class="ellipsis">...</span>
+        {% endif %}
+
+        {% if pages > 1 %}
+            {% for linkpage in page_numbers %}
+                {% ifequal linkpage page %}
+                    <span class="paginate_button current">{{ page }}</span>
+                {% else %}
+                    <a class="paginate_button" href="?{% url_replace page=linkpage %}">{{ linkpage }}</a>
+                {% endifequal %}
+            {% endfor %}
+        {% endif %}
+
+        {% if show_last %}
+            <span class="ellipsis">...</span>
+            <a class="paginate_button" href="?{% url_replace page='last' %}">{{ pages }}</a>
+        {% endif %}
+        {% if has_next %}
+            <a class="paginate_button" href="?{% url_replace page=next %}">{% trans 'next'|title %}</a>
+        {% endif %}
+    </div>
+</div>

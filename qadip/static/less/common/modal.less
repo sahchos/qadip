@@ -1,0 +1,157 @@
+.modal-generate-password {
+	margin: 0 auto;
+	.modal-content__wrapper {
+		display: flex;
+		align-items: center;
+		height: 100%;
+	}
+	.modal-content {
+		text-align: center;
+		overflow: hidden;
+	}
+	.modal-header{
+		padding: 0 15px;
+	}
+	.modal-body  {
+		.message {
+			margin-bottom: 0;
+		}
+	}
+	.modal-footer {
+		padding: 0;
+	}
+	.modal-generate-password__btn {
+		width: 100%;
+		padding: 10px 0;
+		background: transparent;
+		border: none;
+		&:hover {
+			color: #000;
+			background-color: #eee;
+		}
+	}
+}
+
+.modal-copy-schedule {
+	width: 100%;
+	max-width: 500px;
+	margin: 0 auto;
+	.modal-content__wrapper {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
+	.modal-content {
+		width: 100%;
+	}
+}
+
+.modal-archive-schedule {
+	width: 100%;
+	max-width: 330px;
+	margin: 0 auto;
+	.modal-content__wrapper {
+		display: flex;
+		align-items: center;
+		width: 100%;
+		height: 100%;
+	}
+	.modal-content {
+		width: 100%;
+	}
+	.replacement-schedule-select {
+		margin: 0 20px;
+		label {
+			font-size: 12px;
+			margin-bottom: 0;
+		}
+	}
+}
+
+.confirm-modal-mask {
+	position: fixed;
+	z-index: 9998;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, .5);
+	display: table;
+	transition: opacity .3s ease;
+}
+
+.confirm-modal-wrapper {
+	display: table-cell;
+	vertical-align: middle;
+	.sa-icon {
+		width: 80px;
+		height: 80px;
+		border: 4px solid #f0ad4e;
+		border-radius: 50%;
+		margin: 20px auto;
+		position: relative;
+		box-sizing: content-box;
+	}
+	.sa-body {
+		position: absolute;
+    width: 5px;
+    height: 47px;
+    left: 50%;
+    top: 10px;
+    border-radius: 2px;
+    margin-left: -2px;
+    background-color: #f0ad4e;
+	}
+	.sa-dot {
+		position: absolute;
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		margin-left: -3px;
+		left: 50%;
+		bottom: 10px;
+		background-color: #f0ad4e;
+	}
+}
+
+.confirm-modal-container {
+	max-width: 500px;
+	width: 100%;
+	text-align: center;
+	margin: 0px auto;
+	padding: 20px;
+	border-radius: 5px;
+	background-color: #fff;
+	border-radius: 2px;
+	box-shadow: 0 2px 8px rgba(0, 0, 0, .33);
+	transition: all .3s ease;
+	font-family: Helvetica, Arial, sans-serif;
+}
+
+.confirm-modal-header h3 {
+	font-size: 30px;
+	margin-top: 20px;
+	margin-bottom: 10px;
+	font-weight: 500;
+	line-height: 1.1;
+}
+
+.confirm-modal-body {
+	margin: 20px 0;
+}
+
+
+.confirm-modal-enter {
+	opacity: 0;
+}
+
+.confirm-modal-leave-active {
+	opacity: 0;
+}
+
+.confirm-modal-enter .modal-container,
+.confirm-modal-leave-active .modal-container {
+	-webkit-transform: scale(1.1);
+	transform: scale(1.1);
+}

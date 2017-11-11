@@ -1,0 +1,96 @@
+.sidenav_menu {
+    margin-bottom: 10px;
+}
+
+@media (min-width: 768px){
+    body {
+      margin: 45px;
+    }
+    
+    .sidenav_menu.affix {
+        width: 18.35%;
+    }
+}
+
+@media print{
+    a[href]:after {
+        content: "";
+    }
+    
+   fieldset, hr, form, .alert,  .btn, .form-horizontal, .nav {
+       display: none !important;
+   }
+   span, .page-header {
+       padding: 0 !important;
+   }
+}
+
+body > .navbar .brand {
+  padding-right: 0;
+  padding-left: 0;
+  margin-left: 20px;
+  margin-right: 20px;
+  float: left;
+  font-weight: bold;
+  color: #000;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.125);
+  -webkit-transition: all .2s linear;
+     -moz-transition: all .2s linear;
+          transition: all .2s linear;
+}
+body > .navbar .brand:hover {
+  text-decoration: none;
+  text-shadow: 0 1px 0 rgba(255,255,255,.1), 0 0 30px rgba(255,255,255,.4);
+}
+
+
+.ui-timepicker-div .ui-widget-header { margin-bottom: 8px; }
+.ui-timepicker-div dl { text-align: left; }
+.ui-timepicker-div dl dt { height: 25px; margin-bottom: -25px; }
+.ui-timepicker-div dl dd { margin: 0 10px 10px 65px; }
+.ui-timepicker-div td { font-size: 90%; }
+.ui-tpicker-grid-label { background: none; border: none; margin: 0; padding: 0; }
+
+.ui-timepicker-rtl{ direction: rtl; }
+.ui-timepicker-rtl dl { text-align: right; }
+.ui-timepicker-rtl dl dd { margin: 0 65px 10px 10px; }
+
+.dropdown-menu li button:hover{
+	background:repeat,#0088cc;
+	color: #ffffff;
+}
+	
+.dropdown-menu li button{
+	background: transparent;
+	width:100%; 
+	border-radius: 0px; 
+	border:0px;
+	text-align: left;
+	
+}
+	
+.accordion {
+	margin-bottom: 0px;
+}
+
+.filter {
+-webkit-box-sizing: border-box; 
+-moz-box-sizing: border-box; 
+-ms-box-sizing: border-box; 
+-o-box-sizing: border-box; 
+box-sizing: border-box; 
+
+}
+
+.form-horizontal .control-group {
+  margin-bottom: 10px;
+}
+
+.controls > .radio:first-child,
+.controls > .checkbox:first-child {
+  padding-top: 0px;
+}
+
+.answer {
+    cursor: help;
+}

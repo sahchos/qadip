@@ -1,0 +1,42 @@
+.staff_chat{
+    display: none;
+    position: absolute;
+    width: 900px;
+    height: 280px;
+}
+
+.staff_chat_textarea{}
+
+.staff_chat_btn{
+    display: block;
+    background-color: darkred;
+    position: absolute;
+    z-index: 999;
+    padding: 5px 15px;
+}
+
+.staff_chat_btn:hover{
+    background-color: red;
+    cursor: pointer;
+}
+
+.staff_chat_title{
+    color: black;
+}
+
+
+.staff_chat_connections{
+    background-color: orange;
+    width: 100%;
+    float: left;
+}
+
+.staff_chat_window{
+    background-color: blue;
+    width: 100%;
+    float: left;
+}
+
+.staff_chat_wrapper{
+    display: none;
+}

@@ -1,0 +1,257 @@
+form {
+    .alert-danger {
+        background-color: transparent;
+        clear: both;
+        font-size: 13px;
+    }
+    .errorlist {
+        padding: 0;
+        margin: 0;
+        li {
+            list-style: none;
+            color: #a94442;
+        }
+    }
+    .input-small {
+        max-width: 100px;
+    }
+    label {
+        .font-regular {
+            font-weight: 500;
+        }
+    }
+    .radio-inline {
+        padding: 0;
+        li {
+            display: inline-block;
+        }
+    }
+}
+.form-inline {
+    .checkbox {
+        display: inline-block;
+        margin-right: 10px;
+        input {
+            vertical-align: text-bottom;
+            position: relative;
+            margin-left: 0;
+        }
+    }
+    .radio {
+        .form-control {
+            max-width: 100px;
+            display: inline-block;
+        }
+        input {
+            position: relative;
+        }
+    }
+}
+.drop_autocomplete_open {
+    position: relative;
+    .dropdown-menu {
+      width: 100%;
+      max-height: 200px;
+      overflow-y: auto;
+      a {
+        white-space: normal;
+      }
+    }
+}
+.drop_autocomplete {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    display: none;
+    width: 100%;
+    background: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #d8d8d8;
+    z-index: 1;
+    li {
+        cursor: default;
+        padding: 4px 10px;
+        &:hover {
+            background: #ccc;
+        }
+    }
+}
+.vue_autocomplete {
+    padding: 0;
+    margin: 0;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    background: #fff;
+    max-height: 200px;
+    overflow-y: auto;
+    overflow-x: hidden;
+    border: 1px solid #d8d8d8;
+    z-index: 1;
+    li {
+        cursor: default;
+        padding: 4px 10px;
+        &.active {
+          background-color: #337ab7;
+          color: #fff;
+        }
+        &:hover {
+            background: #337ab7;
+        }
+    }
+}
+.form-horizontal .control-label {
+    text-align: left;
+}
+.checkbox, .radio {
+    ul {
+        margin: 0;
+        padding: 0;
+        li {
+            list-style: none;
+            margin-top: 10px;
+            margin-bottom: 10px;
+            & + li {
+                margin-top: -5px;
+            }
+        }
+    }
+}
+
+.form-control.disable {
+    background-color: #eee;
+    opacity: 1;
+    cursor: not-allowed;
+    pointer-events: none;
+}
+
+.radio + .form-group:not(:last-child) {
+    margin-bottom: 0;
+}
+
+.select2-container--bootstrap  {
+  .select2-selection.disable {
+    opacity: 1;
+    cursor: not-allowed;
+    pointer-events: none;
+    background-color: #eee;
+  }
+  .select2-results__option {
+    // &:first-child {
+    //   padding: 0;
+    // }
+  }
+  .select2-results__option {
+      word-break: break-word;
+      word-wrap: break-word;
+      &.select2-results__message {
+        padding: 6px 12px;
+        text-align: center;
+      }
+  }
+}
+
+.schedule-tab-content {
+  .alert-danger {
+    background-color: transparent;
+    border-color: none;
+  }
+}
+
+.input-group input[type="text"]:disabled {
+    background-color: #fff;
+}
+.frequency.disable {
+    label.disable {
+        opacity: 1;
+    }
+}
+label.disable {
+    opacity: 0.5;
+    pointer-events: none;
+}
+#id_effective_dates {
+    li {
+        display: inline-block;
+        margin: 0 5px;
+    }
+}
+.assignment-formset {
+    padding-top: 30px;
+}
+ul {
+    padding: 0;
+    list-style: none;
+    label {
+        font-weight: 400;
+        cursor: pointer;
+    }
+}
+.automatic-planning {
+    .radio {
+        margin-top: 10px;
+    }
+    .days-wrapper {
+        margin-left: 15px;
+        margin-bottom: 27px;
+    }
+}
+.plans-nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    .plans-select-date {
+        display: flex;
+        align-items: center;
+    }
+    .plans-datepicker {
+        width: 100%;
+        max-width: 150px;
+        margin: 0 20px;
+    }
+    label {
+        margin-bottom: 0px;
+    }
+    .form-group {
+        margin-bottom: 0px;
+    }
+}
+.conflict-modal-error {
+    margin-bottom: 5px;
+}
+.conflict-form .checkbox label {
+    text-transform: capitalize;
+}
+.summary-content {
+  display: flex;
+  flex-wrap: wrap;
+  ul {
+    margin: 0 20px 0 0;
+  }
+  li  {
+    margin-bottom: 3px;
+  }
+}
+.shedule-error {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  padding-bottom: 10px;
+  button {
+    margin-right: 10px;
+  }
+  &__text {
+    margin-bottom: 0;
+    span {
+      color: #a94442;
+    }
+  }
+}
+
+#password-field {
+  border: none;
+  text-align: center;
+}

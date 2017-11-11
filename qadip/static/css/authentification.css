@@ -1,0 +1,28 @@
+body {
+    background-color: #f5f5f5;
+}
+
+#login-form,
+#forgotpass-form,
+#register-form {
+    max-width: 400px;
+    padding: 19px 29px 29px;
+    margin: 0 auto 20px;
+    background-color: #fff;
+    border: 1px solid #e5e5e5;
+    -webkit-border-radius: 5px;
+       -moz-border-radius: 5px;
+            border-radius: 5px;
+}
+
+#register-form {
+    max-width: 600px;
+}
+
+.field-item { margin-bottom: 12px; }
+
+.add-on ~ input {
+    border-radius: 0 4px 4px 0;
+    border-left-width: 0;
+}
+input { width: 96%; }

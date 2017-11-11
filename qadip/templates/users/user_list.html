@@ -1,0 +1,104 @@
+{% extends 'staff/base.html' %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+{% load common_tags %}
+
+{% block title %}{% trans 'user'|title %} - {{ config.SITE_TITLE }}{% endblock %}
+
+{% block left_bar_content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {% trans 'Quick Search' %}
+        </div>
+        <div class="panel-body">
+            <form action="." class="quick-search">
+                <div class="form-group has-feedback">
+                    <input {% if request.GET.q %}value="{{ request.GET.q }}"{% endif %} name="q" type="text" class="form-control" placeholder="{% trans 'Search' %}" autocomplete="off" />
+                    <div class="error alert-danger">{{ quick_search_form.q.errors.0 }}</div>
+                    <i class="glyphicon glyphicon-search form-control-feedback"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {% trans 'Advanced Search' %}
+        </div>
+        <div class="panel-body">
+            <form action="{{ request.get_full_path }}">
+                <div class="form-group">
+                    <label>{% trans 'first name'|title %}</label>
+                    {{ form.first_name|attr:'class:form-control' }}
+                    <div class="error alert-danger">{{ form.first_name.errors.0 }}</div>
+                </div>
+                <div class="form-group">
+                    <label>{% trans 'surname'|title %}</label>
+                    {{ form.surname|attr:'class:form-control' }}
+                    <div class="error alert-danger">{{ form.surname.errors.0 }}</div>
+                </div>
+                <div class="form-group">
+                    <label>{% trans 'email'|title %}</label>
+                    {{ form.email|attr:'class:form-control' }}
+                    <div class="error alert-danger">{{ form.email.errors.0 }}</div>
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary btn-block" type="submit" name="advanced_search">{% trans "Search" %}</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+{% endblock %}
+
+{% block page_content %}
+    <div class="col-md-12">
+        <div class="between title-sub">
+            <div class="checkbox">
+                <label class="link">
+                    {% if request.GET.show_archived == 'true' %}
+                        <a href="?{% url_replace show_archived='false' page=1 %}"> <input checked type="checkbox">{% trans 'Show archived user'|title %} </a>
+                    {% else %}
+                        <a href="?{% url_replace show_archived='true' page=1 %}"> <input type="checkbox">{% trans 'Show archived user'|title %} </a>
+                    {% endif %}
+                </label>
+            </div>
+            {% if request.user.is_manager or request.user.is_admin %}
+                <a href="{% url 'users:create' %}" class="btn btn btn-default">{% trans 'new user'|title %}</a>
+            {% endif %}
+        </div>
+
+    {% if users %}
+        {% paginator 4 %}
+
+        <div>
+            <table class="display responsive nowrap datatables-simple" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                      {% sorted_column title='first name'|title sort_by='first_name' %}
+                      {% sorted_column title='surname'|title sort_by='surname' %}
+                      {% sorted_column title='email'|title sort_by='email' %}
+                      {% sorted_column title='role'|title sort_by='role' %}
+                      {% sorted_column title='last login'|title sort_by='assistant' %}
+                  </tr>
+                </thead>
+                <tbody>
+                  {% for user in users %}
+                      <tr {% if user.is_archived %}class="selected"{% endif %}>
+                        <td><a href="{{ user.get_absolute_url }}">{{ user.first_name|default:'-' }}</a></td>
+                        <td><a href="{{ user.get_absolute_url }}">{{ user.last_name|default:'-' }}</a></td>
+                        <td>{{ user.email|default:'-' }}</td>
+                        <td>{{ user.get_role_name }}</td>
+                        <td>{{ user.last_login|date:"DATE_FORMAT"|default:'-' }}</td>
+                      </tr>
+                  {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    {% else %}
+        <div class="error alert-warning">{% trans 'user members are not found' %}</div>
+    {% endif %}
+
+    </div>
+{% endblock page_content %}

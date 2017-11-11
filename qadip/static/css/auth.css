@@ -1,0 +1,48 @@
+body {  }
+.container {
+	margin: auto;
+	max-width: 480px;
+	height: 100%;
+	padding: 12px; }
+form {
+	width: 100%;
+	height: 100%; }
+	form header,
+	form article,
+	form footer {
+		position: absolute;
+		right: 0;
+		left: 0; }
+		form header {
+			background: rgba(71, 143, 194, 0.975);
+			color: #fff;
+			top: 0;
+			bottom: 72px; }
+			form header .logo {
+				position: relative;
+				padding: 10% 0;
+				height: 36%; }
+				form header .logo img { margin: auto; }
+			form header .field-item {
+				padding-left: 36px;
+				padding-right: 36px;
+				background: none; }
+			form header a { color: #fff; }
+			form header a.hover,
+			form header a.tap { color: #fff; }
+		form footer {
+			text-align: center;
+			bottom: 0;
+			height: 72px; }
+			form footer .btn { padding: 12px 48px; }
+form .message {
+	margin: 0 0 6px 0;
+	padding: 0 12px 6px 12px;
+	border: none;
+	border-radius: 0; }
+	form .message.error {
+		background: none;
+		border-bottom: 1px solid rgba(0, 0, 0, .12); }
+@media all and (max-height: 480px) {
+	form header .logo { display: none; }
+}

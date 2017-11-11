@@ -1,0 +1,15 @@
+User-agent: *
+Allow: /
+Allow: /static/website/img
+Disallow: /static/bootstrapformhelpers
+Disallow: /static/css
+Disallow: /static/font
+Disallow: /static/gentelella
+Disallow: /static/img
+Disallow: /static/js
+Disallow: /static/vendors
+Disallow: /static/website
+Disallow: /media
+Disallow: /signin/
+Disallow: /register/
+Disallow: /feedback/

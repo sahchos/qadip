@@ -1,0 +1,117 @@
+{% extends 'base.html' %}
+
+{% load i18n %}
+
+
+{% block left_bar_content %}
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {% trans 'Quick Search' %}
+        </div>
+        <div class="panel-body">
+            <form action="#">
+                <div class="form-group has-feedback">
+                    <input type="text" class="form-control" placeholder="{% trans 'Search' %}" />
+                    <i class="glyphicon glyphicon-search form-control-feedback"></i>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            {% trans 'Advanced Search' %}
+        </div>
+        <div class="panel-body">
+            <form action="#">
+                <div class="form-group">
+                    <label>First Name</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Surname</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Addres</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group">
+                    <label>Date of Birth</label>
+                    <div class="input-group birth_date">
+                        <input class="form-control" name="date" type="text" />
+                        <span class="input-group-addon">
+                            <span class="glyphicon glyphicon-calendar"></span>
+                        </span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label>Client Identifier</label>
+                    <input type="text" class="form-control" />
+                </div>
+                <div class="form-group text-center">
+                    <button class="btn btn-primary btn-block" type="submit">{% trans "Search" %}</button>
+                </div>
+            </form>
+        </div>
+</div>
+{% endblock %}
+
+{% block submenu %}
+    <div class="page-header">
+        <nav class="nav sub-menu">
+            <a href="#">Transport Request</a>
+            <a href="#" class="active">Service Shedules</a>
+            <a href="#">Movement Events</a>
+        </nav>
+        <h1>Service Shedules</h1>
+    </div>
+{% endblock %}
+
+{% block page_content %}
+    <div class="col-md-12">
+        <div>
+            <table id="example" class="display responsive nowrap datatables-simple" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Firs Name</th>
+                    <th>Surname</th>
+                    <th>Gender</th>
+                    <th>DoB</th>
+                    <th>NCY</th>
+                    <th>Client ID</th>
+                    <th>Registered School</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td><a href="#">Allan</a></td>
+                    <td><a href="#">Smith</a> <a href="#" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
+                    <td>M</td>
+                    <td>23/11/2010</td>
+                    <td>3</td>
+                    <td>12345</td>
+                    <td>Chatham Primary</td>
+                  </tr>
+                  <tr>
+                    <td><a href="#">Allan</a></td>
+                    <td><a href="#">Smith</a> <a href="#" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
+                    <td>M</td>
+                    <td>23/11/2010</td>
+                    <td>3</td>
+                    <td>12345</td>
+                    <td>Chatham Primary</td>
+                  </tr>
+                  <tr>
+                    <td><a href="#">Allan</a></td>
+                    <td><a href="#">Smith</a> <a href="#" target="_blank"><i class="fa fa-external-link" aria-hidden="true"></i></a></td>
+                    <td>M</td>
+                    <td>23/11/2010</td>
+                    <td>3</td>
+                    <td>12345</td>
+                    <td>Chatham Primary</td>
+                  </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% endblock page_content %}

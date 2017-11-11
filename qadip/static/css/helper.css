@@ -1,0 +1,232 @@
+/* helper */
+.relative { position: relative; }
+.center { margin: auto; }
+
+.right	{ float: right; }
+.left	{ float: left; }
+
+.o1 { opacity: 1 !important; }
+.o0 { opacity: 0 !important; }
+
+.oh { overflow: hidden !important; }
+.ov { overflow: visible !important; }
+
+.dn { display: none !important; }
+.db { display: block !important; }
+.dib { display: inline-block; *display: inline; vertical-align: top; zoom: 1; }
+
+.fn { float: none !important; }
+.fr { float: right !important; }
+.fl { float: left !important; }
+
+.wa { width: auto !important; }
+.ha { height: auto !important; }
+.w0 { width: auto !important; }
+.h0 { height: auto !important; }
+
+.m0 { margin: 0 !important; }
+.mt0 { margin-top: 0 !important; }
+.mr0 { margin-right: 0 !important; }
+.mb0 { margin-bottom: 0 !important; }
+.ml0 { margin-left: 0 !important; }
+
+.p0 { padding: 0 !important; }
+.pt0 { padding-top: 0 !important; }
+.pr0 { padding-right: 0 !important; }
+.pb0 { padding-bottom: 0 !important; }
+.pl0 { padding-left: 0 !important; }
+
+.fs10 { font-size: 10px !important; }
+.fs11 { font-size: 11px !important; }
+.fs12 { font-size: 12px !important; }
+.fs13 { font-size: 13px !important; }
+.fs14 { font-size: 14px !important; }
+.fs16 { font-size: 16px !important; }
+.fs18 { font-size: 18px !important; }
+.fs20 { font-size: 20px !important; }
+.fs24 { font-size: 24px !important; }
+
+.tal { text-align: left !important; }
+.tar { text-align: right !important; }
+.tac { text-align: center !important; }
+.vat { vertical-align: top !important; }
+.vam { vertical-align: middle !important; }
+.vab { vertical-align: bottom !important; }
+
+.tdn { text-decoration: none !important; }
+.tdn:hover { text-decoration: underline !important; }
+
+.wsn { white-space: nowrap !important; }
+
+.cp { cursor: pointer; }
+.cd { cursor: default; }
+
+.b0 { border: 0 !important; }
+.bt0 { border-top: 0 !important; }
+.br0 { border-right: 0 !important; }
+.bb0 { border-bottom: 0 !important; }
+.bl0 { border-left: 0 !important; }
+
+.bbd { text-decoration: none !important; border-bottom: 1px dashed; }
+.bbd:hover { text-decoration: none !important; border-bottom: 0; }
+
+.bbdo { text-decoration: none !important; border-bottom: 1px dotted; }
+.bbdo:hover { text-decoration: none !important; border-bottom: 0; }
+
+.bgn { background: none !important; }
+
+.fs30 { font-size: 30px; }
+
+/* * * * * effects * * * * */
+
+/*::-moz-selection {  }*/
+/*::selection {  }*/
+
+:focus { outline: 0; }
+
+input:focus::-webkit-input-placeholder,
+input:focus:-moz-placeholder,
+input:focus:-ms-input-placeholder,
+textarea:focus::-webkit-input-placeholder,
+textarea:focus:-moz-placeholder,
+textarea:focus:-ms-input-placeholder { color: transparent; }
+
+.t:before,
+.t:after,
+.t {
+    -webkit-transition: All .25s ease;
+       -moz-transition: All .25s ease;
+         -o-transition: All .25s ease;
+            transition: All .25s ease; }
+            .t:hover:before,
+            .t:hover:after,
+            .t:hover {
+                -webkit-transition: All .25s ease;
+                   -moz-transition: All .25s ease;
+                     -o-transition: All .25s ease;
+                        transition: All .25s ease; }
+
+
+
+/* * * * * trash * * * * */
+
+.select-none {
+    -webkit-user-select: none;
+    -moz-user-select: none; }
+
+.select-text {
+    -webkit-user-select: text;
+    -moz-user-select: text; }
+
+.select-all {
+    /* mouse double-click */
+    -moz-user-select: all; }
+
+.text-shadow {
+    text-shadow: 2px 2px 2px #666; }
+
+.one-edge-shadow {
+    -webkit-box-shadow: 0 8px 6px -6px black;
+       -moz-box-shadow: 0 8px 6px -6px black;
+            box-shadow: 0 8px 6px -6px black; }
+
+.transparent-border {
+    -webkit-background-clip: border;		/* Safari 4? Chrome 6? */
+       -moz-background-clip: border;		/* Firefox 3.6 */
+            background-clip: border-box; }	/* Firefox 4, Safari 5, Opera 10, IE 9 */
+
+
+.justify {
+    text-align: justify;
+    -webkit-text-align-last: justify;
+       -moz-text-align-last: justify;
+         -o-text-align-last: justify;
+            text-align-last: justify; }
+    .justify:after {
+        display: inline-block;
+        width: 100%;
+        content: ""; }
+
+
+
+
+/* * * * * ie hack * * * * */
+
+         .clip { clip: rect(40px, auto, auto, 40px); }
+html.ie6 .clip,
+html.ie7 .clip { clip: rect(40px auto auto 40px); }
+
+
+
+.shadow {
+    -webkit-box-shadow: -5px -5px 10px #000000;
+       -moz-box-shadow: -5px -5px 10px #000000;
+            box-shadow: -5px -5px 10px #000000; }
+html[class^="ie"] .shadow,
+html[class*=" ie"] .shadow {
+
+    /* DropShadow: OffX — смещение тени по горизонтали; OffY — смещение тени по вертикали; Color — цвет тени. */
+    /* Chroma: Color - цвет подложки */
+
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.DropShadow(OffX=-5, OffY=-5, Color='#000000'), progid:DXImageTransform.Microsoft.Chroma(Color='#ffffff')";
+
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.DropShadow(OffX=-5, OffY=-5, Color='#000000'),
+            progid:DXImageTransform.Microsoft.Chroma(Color='#ffffff');
+
+    margin-left: 5px;	/* если OffX < 0 */
+    margin-top: 5px;	/* если OffY < 0 */
+}
+
+
+.dropshadow {
+    -webkit-box-shadow: 0 0 10px #000000;
+       -moz-box-shadow: 0 0 10px #000000;
+            box-shadow: 0 0 10px #000000; }
+html[class^="ie"] .dropshadow,
+html[class*=" ie"] .dropshadow {
+
+    /* Shadow: Direction — угол направления тени от 0 до 360°; Color — цвет тени; Strength — смещение тени. */
+    /* Chroma: Color - цвет подложки */
+
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Shadow(Direction=120, Color='#000000', Strength=10), progid:DXImageTransform.Microsoft.Chroma(Color='#ffffff')";
+
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Shadow(Direction=120, Color='#000000', Strength=10),
+            progid:DXImageTransform.Microsoft.Chroma(Color='#ffffff');
+
+    margin-left: -5px;	/* если Strength > 0 и Direction направлен влева */
+    margin-top: -5px;	/* если Strength > 0 и Direction направлен вверх */
+}
+
+
+.blur {
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
+       -moz-box-shadow: 0 0 10px rgba(0, 0, 0, 0.50);
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.50); }
+html[class^="ie"] .blur,
+html[class*=" ie"] .blur {
+
+    /* Blur: PixelRadius — радиус размытости; makeshadow - тень; ShadowOpacity - прозрачность */
+
+    /* For IE 8 */
+    -ms-filter: "progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, makeshadow=’true’, ShadowOpacity=.50)";
+
+    /* For IE 5.5 - 7 */
+    filter: progid:DXImageTransform.Microsoft.Blur(PixelRadius=10, makeshadow=’true’, ShadowOpacity=.50);
+
+    margin: -10px;	/* -(PixelRadius*2)px */
+}
+
+
+
+/*
+@-moz-document url-prefix() {
+    .row {
+        width: 100%;
+        -moz-box-sizing: border-box;
+    }
+}
+*/

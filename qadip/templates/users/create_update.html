@@ -1,0 +1,173 @@
+{% extends 'staff/base.html' %}
+
+{% load i18n %}
+{% load widget_tweaks %}
+
+{% block title %}{% if current_user %}{{ current_user.fullname }}{% else %}{% trans 'new user'|title %}{% endif %} - {{ config.SITE_TITLE }}{% endblock %}
+
+{% block left_bar_content %}
+    <div class="panel-body">
+        <p><a href="{% url 'users:list' %}" class="btn btn btn-default btn-block">{% trans 'Back to Search' %}</a><p>
+        {% if current_user %}
+            <div class="list-dl">
+                <div><strong>{% trans 'created at'|title %}:</strong> {{ current_user.created_at|date:'DATE_FORMAT' }}</div>
+                <div><strong>{% trans 'created by'|title %}:</strong> {{ current_user.created_by }}</div>
+                <div><strong>{% trans 'modified at'|title %}:</strong> {{ current_user.modified_at|date:'DATE_FORMAT' }}</div>
+                <div><strong>{% trans 'modified by'|title %}:</strong> {{ current_user.modified_by }}</div>
+                <div><strong>{% trans 'last login'|title %}:</strong> {{ current_user.last_login|date:'DATE_FORMAT'|default:'-' }}</div>
+                <div><strong>{% trans 'date joined'|title %}:</strong> {{ current_user.date_joined|date:'DATE_FORMAT' }}</div>
+
+                <hr>
+                <div><strong>{% trans 'status'|title %}:</strong> {% if not current_user.is_archived %}{% trans 'current'|title %}{% else %}{% trans 'archived'|title %}{% endif %}</div>
+            </div>
+            {% if request.user.is_manager and not current_user.is_admin or request.user.is_admin %}
+                <div class="form-group archive-btn">
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        <p><button class="btn btn btn-default btn-block" {% if current_user.is_archived %}disabled{% endif %} name="archive">{% trans 'archive user'|title %}</button></p>
+                    </form>
+
+                    <form action="." method="post">
+                        {% csrf_token %}
+                        <p><button class="btn btn btn-default btn-block" {% if not current_user.is_archived %}disabled{% endif %} name="unarchive">{% trans 'unarchive user'|title %}</button></p>
+                    </form>
+                </div>
+            {% endif %}
+        {% endif %}
+    </div>
+{% endblock %}
+
+
+{% block page_content %}
+    <div class="between title-sub">
+        <h2>
+            {% if current_user %}{{ current_user.fullname }}{% else %}{% trans "new user"|title %}{% endif %}
+        </h2>
+        {% if request.user.is_manager and not current_user.is_admin or request.user.is_admin %}
+            <button type="submit" class="btn btn btn-default" data-form="add-address-form">{% trans "save changes"|title %}</button>
+        {% endif %}
+    </div>
+    <div class="panel-body">
+        <!-- Nav tabs -->
+        <ul class="nav nav-tabs">
+            <li class="active">
+                <a href="#user" data-toggle="tab" aria-expanded="true">{% trans 'user details'|title %}</a>
+            </li>
+        </ul>
+
+        <!-- Tab panes -->
+        <div class="tab-content fix-height">
+            <div class="tab-pane fade active in" id="address">
+                <div class="row wrapper-fieldset">
+                    <div class="alert-danger text-center">{% for error in form.non_field_errors %}{{ error }}{% endfor %}</div>
+                    <form id="add-address-form" action="." method="post" novalidate>
+                        {% csrf_token %}
+                        <div class="col-md-12 col-lg-9">
+                            <fieldset>
+                                <legend>{% trans 'General'|title %}</legend>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label>{% trans 'username'|title %}</label>
+                                            {{ form.username|attr:'class:form-control'|attr:'autofocus' }}
+                                            <div class="error alert-danger">{{ form.username.errors.0 }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label>{% trans 'surname'|title %}</label>
+                                            {{ form.last_name|attr:'class:form-control' }}
+                                            <div class="error alert-danger">{{ form.last_name.errors.0 }}</div>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-4 col-sm-12">
+                                        <div class="form-group">
+                                            <label>{% trans 'first name'|title %}</label>
+                                            {{ form.first_name|attr:'class:form-control' }}
+                                            <div class="error alert-danger">{{ form.first_name.errors.0 }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-8 col-sm-12">
+                                        <div class="form-group">
+                                            <label>{% trans 'email'|title %}</label>
+                                            {{ form.email|attr:'class:form-control' }}
+                                            <div class="error alert-danger">{{ form.email.errors.0 }}</div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </fieldset>
+                            <fieldset>
+                                <legend>{% trans 'Permissions'|title %}</legend>
+                                <div class="row">
+                                    <div class="col-md-4 col-sm-6">
+                                        <div class="form-group">
+                                            <label>{% trans 'role'|title %}</label>
+                                            {{ form.role|attr:'autofocus' }}
+                                            <div class="error alert-danger">{{ form.role.errors.0 }}</div>
+                                        </div>
+                                    </div>
+                                    {% if request.user.is_team_leader or request.user.is_manager or request.user.is_admin %}
+                                        <div class="col-md-4 col-sm-6">
+                                            <div class="form-group">
+                                                <label>{% trans 'groups'|title %}</label>
+                                                {{ form.groups }}
+                                                <div class="error alert-danger">{{ form.groups.errors.0 }}</div>
+                                            </div>
+                                        </div>
+                                    {% endif %}
+                                </div>
+                            </fieldset>
+                        </div>
+                    </form>
+
+                    <div class="modal fade modal-sm modal-generate-password" id="modal-generate-password" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-content__wrapper">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-generate-password__title">New User Password</h3>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="modal-generate-password__message message"></p>
+                                    <input type="text" id="password-field" readonly>
+                                </div>
+                                <div class="modal-footer">
+                                    <button
+                                      id="copy-passwords"
+                                      data-dismiss="modal"
+                                      data-clipboard-action="copy"
+                                      data-clipboard-target="#password-field"
+                                      class="modal-generate-password__btn"
+                                    >
+                                    Copy to clipboard
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock page_content %}
+
+{% block script %}
+    {% if messages %}
+      {% for message in messages %}
+            <script type="text/javascript">
+                {% if 'popup' in message.tags %}
+                    var message = '{{ message }}';
+                    var splitMessage = message.split(' ');
+                    var modal = $('#modal-generate-password');
+                    var password = splitMessage.splice(splitMessage.length - 1);
+
+                    modal.modal('show');
+                    modal.find('#password-field').val(password);
+                    modal.find('.message').html(splitMessage.join(' '));
+                {% endif %}
+            </script>
+      {% endfor %}
+    {% endif %}
+{% endblock script %}

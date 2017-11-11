@@ -1,0 +1,9 @@
+-r base.txt
+
+django-debug-toolbar==1.6
+ipdb==0.10.2
+
+factory-boy==2.8.1
+coverage==4.3.4
+django-debug-panel==0.8.3
+django-silk==1.0.0
