@@ -12,22 +12,22 @@ sys.path.append('qadip')
 
 env = environ.Env(
     DJANGO_DEBUG=(bool, False),
-    DJANGO_SECRET_KEY=(str, 'CHANGEME!!!klz#az^^-=+z8mw!v2zgw*&gr6=y0=^g#b0xolfg@xtdwc@pg-'),
+    DJANGO_SECRET_KEY=(str, os.environ.get('DJANGO_SECRET_KEY')),
     DJANGO_ADMINS=(list, []),
-    DJANGO_ALLOWED_HOSTS=(list, []),
+    DJANGO_ALLOWED_HOSTS=(list, os.environ.get('DJANGO_ALLOWED_HOSTS')),
     DJANGO_STATIC_ROOT=(str, str(APPS_DIR('staticfiles'))),
     DJANGO_MEDIA_ROOT=(str, str(APPS_DIR('media'))),
     DJANGO_DATABASE_URL=(str, 'postgis:///qadip'),
 
-    DJANGO_DEFAULT_FROM_EMAIL=(str, 'admin@example.com'),
-    DJANGO_EMAIL_BACKEND=(str, 'django.core.mail.backends.smtp.EmailBackend'),
-    DJANGO_EMAIL_HOST=(str, 'smtp.gmail.com'),
-    DJANGO_EMAIL_HOST_PASSWORD=(str, 'fake_password'),
-    DJANGO_EMAIL_HOST_USER=(str, "your_email@gmail.com"),
-    DJANGO_EMAIL_PORT=(int, 587),
-    DJANGO_EMAIL_USE_TLS=(bool, True),
+    DJANGO_DEFAULT_FROM_EMAIL=(str, os.environ.get('DJANGO_DEFAULT_FROM_EMAIL')),
+    DJANGO_EMAIL_BACKEND=(str, os.environ.get('DJANGO_EMAIL_BACKEND')),
+    DJANGO_EMAIL_HOST=(str, os.environ.get('DJANGO_EMAIL_HOST')),
+    DJANGO_EMAIL_HOST_PASSWORD=(str, os.environ.get('DJANGO_EMAIL_HOST_PASSWORD')),
+    DJANGO_EMAIL_HOST_USER=(str, os.environ.get('DJANGO_EMAIL_HOST_USER')),
+    DJANGO_EMAIL_PORT=(int, os.environ.get('DJANGO_EMAIL_PORT')),
+    DJANGO_EMAIL_USE_TLS=(bool, os.environ.get('DJANGO_EMAIL_USE_TLS')),
 
-    DJANGO_SERVER_EMAIL=(str, 'root@localhost.com'),
+    DJANGO_SERVER_EMAIL=(str, os.environ.get('DJANGO_SERVER_EMAIL')),
     DJANGO_USE_DEBUG_TOOLBAR=(bool, False),
     DJANGO_USE_DEBUG_SILK=(bool, False),
     DJANGO_TEST_RUN=(bool, False),
@@ -37,7 +37,7 @@ environ.Env.read_env()
 
 EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND')
 EMAIL_HOST = env('DJANGO_EMAIL_HOST')
-EMAIL_HOST_PASSWORD = env('DJANGO_EMAIL_HOST_PASSWORD')
+EMAIL_HOST_PASSWORD = env('DJANGO_EMAIL_HOST_PASSWORD') or os.environ['DJANGO_EMAIL_HOST']
 EMAIL_HOST_USER = env('DJANGO_EMAIL_HOST_USER')
 EMAIL_PORT = env('DJANGO_EMAIL_PORT')
 EMAIL_USE_TLS = env.bool('DJANGO_EMAIL_USE_TLS')
