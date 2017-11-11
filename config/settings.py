@@ -109,6 +109,7 @@ AUTH_USER_MODEL = 'users.User'
 ADMIN_URL = r'^admin/'
 
 MIDDLEWARE_CLASSES = (
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
