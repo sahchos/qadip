@@ -18,17 +18,23 @@ env = environ.Env(
     DJANGO_STATIC_ROOT=(str, str(APPS_DIR('staticfiles'))),
     DJANGO_MEDIA_ROOT=(str, str(APPS_DIR('media'))),
     DJANGO_DATABASE_URL=(str, 'postgis:///qadip'),
-    DJANGO_EMAIL_URL=(environ.Env.email_url_config, 'consolemail://'),
+
     DJANGO_DEFAULT_FROM_EMAIL=(str, 'admin@example.com'),
     DJANGO_EMAIL_BACKEND=(str, 'django.core.mail.backends.smtp.EmailBackend'),
     DJANGO_SERVER_EMAIL=(str, 'root@localhost.com'),
-
     DJANGO_USE_DEBUG_TOOLBAR=(bool, False),
     DJANGO_USE_DEBUG_SILK=(bool, False),
     DJANGO_TEST_RUN=(bool, False),
 )
 
 environ.Env.read_env()
+
+EMAIL_BACKEND = env('DJANGO_EMAIL_BACKEND')
+EMAIL_HOST = env('DJANGO_EMAIL_HOST')
+EMAIL_HOST_PASSWORD = env('DJANGO_EMAIL_HOST_PASSWORD')
+EMAIL_HOST_USER = env('DJANGO_EMAIL_HOST_USER')
+EMAIL_PORT = env('DJANGO_EMAIL_PORT')
+EMAIL_USE_TLS = env.bool('DJANGO_EMAIL_USE_TLS')
 
 DEBUG = env.bool("DJANGO_DEBUG")
 DJANGO_USE_DEBUG_TOOLBAR = env.bool('DJANGO_USE_DEBUG_TOOLBAR')
@@ -118,19 +124,6 @@ CONSTANCE_CONFIG = {
 
 # See: http://django-crispy-forms.readthedocs.io/en/latest/install.html#template-packs
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
-
-EMAIL_URL = env.email_url('DJANGO_EMAIL_URL')
-EMAIL_BACKEND = EMAIL_URL['EMAIL_BACKEND']
-EMAIL_HOST = EMAIL_URL.get('EMAIL_HOST', '')
-if EMAIL_URL.get('EMAIL_HOST_PASSWORD', '') == 'special':
-    EMAIL_HOST_PASSWORD = env('DJANGO_EMAIL_HOST_PASSWORD_SPECIAL')
-else:
-    EMAIL_HOST_PASSWORD = EMAIL_URL.get('EMAIL_HOST_PASSWORD', '')
-EMAIL_HOST_USER = EMAIL_URL.get('EMAIL_HOST_USER', '')
-EMAIL_PORT = EMAIL_URL.get('EMAIL_PORT', '')
-EMAIL_USE_SSL = 'EMAIL_USE_SSL' in EMAIL_URL
-EMAIL_USE_TLS = 'EMAIL_USE_TLS' in EMAIL_URL
-EMAIL_FILE_PATH = EMAIL_URL.get('EMAIL_FILE_PATH', '')
 
 DEFAULT_FROM_EMAIL = env('DJANGO_DEFAULT_FROM_EMAIL')
 
