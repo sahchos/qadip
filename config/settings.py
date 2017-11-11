@@ -21,6 +21,12 @@ env = environ.Env(
 
     DJANGO_DEFAULT_FROM_EMAIL=(str, 'admin@example.com'),
     DJANGO_EMAIL_BACKEND=(str, 'django.core.mail.backends.smtp.EmailBackend'),
+    DJANGO_EMAIL_HOST=(str, 'smtp.gmail.com'),
+    DJANGO_EMAIL_HOST_PASSWORD=(str, 'fake_password'),
+    DJANGO_EMAIL_HOST_USER=(str, "your_email@gmail.com"),
+    DJANGO_EMAIL_PORT=(int, 587),
+    DJANGO_EMAIL_USE_TLS=(bool, True),
+
     DJANGO_SERVER_EMAIL=(str, 'root@localhost.com'),
     DJANGO_USE_DEBUG_TOOLBAR=(bool, False),
     DJANGO_USE_DEBUG_SILK=(bool, False),
