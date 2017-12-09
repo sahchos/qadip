@@ -9,7 +9,7 @@ from qadip.users.views import UserPasswordResetView
 urlpatterns = [
     url(r'^$', allauth_views.login, name='home'),
     url(settings.ADMIN_URL, include(admin.site.urls)),
-    url(r'^accounts/password/reset/', UserPasswordResetView.as_view(), name='account_password_reset'),
+    url(r'^accounts/password/reset/$', UserPasswordResetView.as_view(), name='account_password_reset'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^users/', include('qadip.users.urls', namespace='users')),
 ]

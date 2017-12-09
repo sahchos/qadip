@@ -187,10 +187,16 @@ AUTH_PASSWORD_VALIDATORS = [
         'OPTIONS': {
             'min_length': 1,
         }
+    },
+    {
+        'NAME': 'users.validators.MaxLengthValidator',
+        'OPTIONS': {
+            'max_length': 8,
+        }
     }
 ]
 
-# SESSION_COOKIE_AGE = 1 * 60
+SESSION_COOKIE_AGE = 1 * 60
 
 # allauth configuration
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
