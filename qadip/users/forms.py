@@ -6,7 +6,7 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import password_validation
 from django.utils.translation import ugettext_lazy as _
 
-from allauth.account.forms import SignupForm
+from allauth.account.forms import SignupForm, ResetPasswordForm
 
 from qadip.users.models import User
 
@@ -60,3 +60,8 @@ class UserUpdateForm(forms.ModelForm):
     class Meta:
         model = User
         fields = ('first_name', 'last_name')
+
+class UserPasswordResetForm(ResetPasswordForm):
+
+    def clean(self):
+        raise forms.ValidationError('Please enter correct email.')

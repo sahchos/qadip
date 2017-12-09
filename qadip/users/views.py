@@ -3,10 +3,10 @@ from django.views.generic import UpdateView
 from django.contrib import messages
 from braces.views import LoginRequiredMixin
 
-from allauth.account.views import SignupView, PasswordChangeView
+from allauth.account.views import SignupView, PasswordChangeView, PasswordResetView
 
 from .models import User
-from .forms import UserSignupForm, UserUpdateForm
+from .forms import UserSignupForm, UserUpdateForm, UserPasswordResetForm
 
 
 class UserProfileView(LoginRequiredMixin, UpdateView):
@@ -30,3 +30,6 @@ class UserPasswordChangeView(PasswordChangeView):
                 return redirect('password_change')
 
         return super().post(request, *args, **kwargs)
+
+class UserPasswordResetView(PasswordResetView):
+    form_class = UserPasswordResetForm
