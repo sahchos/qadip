@@ -9,7 +9,7 @@
         <h2>Profile: {{ request.user.first_name }} {{ request.user.last_name }}</h2>
     </div>
 
-    <form method="post" action="." class="add_email">
+    <form method="post" action="." class="add_email" novalidate>
         {% csrf_token %}
         {{ form|crispy }}
         <button class="btn btn-primary" name="action_add" type="submit">{% trans "Save" %}</button>

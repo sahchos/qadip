@@ -6,6 +6,10 @@ from django.contrib.auth.forms import PasswordChangeForm
 from django.contrib.auth import password_validation
 from django.utils.translation import ugettext_lazy as _
 
+from allauth.account.forms import SignupForm
+
+from qadip.users.models import User
+
 
 class UserPasswordChangeForm(PasswordChangeForm):
 
@@ -38,3 +42,21 @@ class UserPasswordChangeForm(PasswordChangeForm):
             raise forms.ValidationError(_('New and confirm password do not match'))
 
         return self.cleaned_data
+
+
+class UserSignupForm(SignupForm):
+    email = forms.CharField()
+
+    def clean(self):
+        data = self.cleaned_data
+        data['username'] = self.cleaned_data['email']
+        return data
+
+
+class UserUpdateForm(forms.ModelForm):
+    first_name = forms.CharField(min_length=3)
+    last_name = forms.CharField(min_length=3)
+
+    class Meta:
+        model = User
+        fields = ('first_name', 'last_name')
