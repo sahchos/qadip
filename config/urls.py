@@ -5,12 +5,13 @@ from django.contrib import admin
 
 from allauth.account.views import login
 
-from qadip.users.views import UserSignupView
+from qadip.users.views import UserSignupView, UserPasswordChangeView
 
 urlpatterns = [
     url(r'^$', login, name='home'),
     url(settings.ADMIN_URL, include(admin.site.urls)),
     url(r'^accounts/signup/$', UserSignupView.as_view()),
+    url(r'^accounts/password/change/$', UserPasswordChangeView.as_view(), name='password_change'),
     url(r'^accounts/', include('allauth.urls')),
     url(r'^users/', include('qadip.users.urls', namespace='users')),
 ]
